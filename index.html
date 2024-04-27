@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Phone</title>
+
+    <!-- google font link -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+
+
+    <!-- tailwind css and daisy ui-->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .font_poppins {
+            font-family: "Poppins", sans-serif;
+
+        }
+    </style>
+
+
+
+</head>
+
+<body class="font_poppins">
+    <header class="container mx-auto px-3 lg:px-0">
+        <div class="navbar bg-base-100 mt-3 rounded-md lg:px-5">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div class="flex justify-center items-center">
+                        <div class="">
+                            <h4 class="text-[#131318] md:text-2xl font-medium">Hot Gadgets</h4>
+                        </div>
+                    </div>
+
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content space-y-2 z-[1] text-[#424247] rounded-box w-24 text-center ">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Shop</a>
+                        <a href="#">Contact</a>
+                    </ul>
+
+                </div>
+
+
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+
+                    <div class="hidden md:block space-x-5 text-[18px] text-[#424247] font-medium">
+                        <a class="hover:text-red-600 duration-300" href="#">Home</a>
+                        <a class="hover:text-red-600 duration-300" href="#">About</a>
+                        <a class="hover:text-red-600 duration-300" href="#">Shop</a>
+                        <a class="hover:text-red-600 duration-300" href="#">Contact</a>
+                    </div>
+                </ul>
+            </div>
+            <div class="navbar-end space-x-3">
+                <button class="btn btn-ghost btn-circle hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <button
+                    class="btn btn-success outline-none border-none bg-[#FF4240] rounded-md text-white font-normal md:font-medium">
+                    Sign Up
+                </button>
+            </div>
+        </div>
+        <div class="hero min-h-screen my-5"
+            style="background-image: url(https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-position: center;">
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-center text-neutral-content">
+                <div class="max-w-md">
+                    <h1 class="mb-5 text-xl  md:text-4xl font-bold">All Phones Here. Find Your Dream Phone</h1>
+                    <p class="mb-5">There are many variations of passages of Lorem Ipsum available, but the majority
+                        have suffered alteration in some form, by injected humou.</p>
+                    <button class="btn btn-primary">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mx-auto px-3 lg:px-0">
+
+        <!-- search section  -->
+        <h2 class="text-2xl md:text-4xl text-center my-4">Search your phone</h2>
+        <section>
+            <div class="flex justify-center gap-1">
+                <input id="search_filed" type="text" placeholder="Search your phone..."
+                    class="input input-bordered w-full max-w-xs bg-slate-100" />
+                <button onclick="handleSearch()" class="btn btn-info text-white">Search</button>
+            </div>
+        </section>
+
+        <!-- search result -->
+        <section class="my-10">
+
+            <!-- spinner of loader -->
+            <div class="text-center my-40 hidden" id="loading_spinner">
+                <progress class="progress w-56"></progress>
+            </div>
+
+            <!-- grid section -->
+            <div id="card_container" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+
+                <!-- <div class="card bg-base-100 shadow-xl">
+                    <figure class="px-10 pt-10">
+                      <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
+                    </figure>
+                    <div class="card-body items-center text-center">
+                      <h2 class="card-title">Shoes!</h2>
+                      <p>If a dog chews shoes whose shoes does he choose?</p>
+                      <div class="card-actions">
+                        <button class="btn btn-primary">Buy Now</button>
+                      </div>
+                    </div>
+                </div> -->
+
+            </div>
+            <!-- show all button -->
+            <div class="flex justify-center mt-5">
+                <button onclick="handleShowAll()" id="btn_hidden"
+                    class="btn btn-info text-white px-10 text-[18px] hidden">Show All</button>
+            </div>
+        </section>
+
+
+        <!-- module part -->
+        <section>
+            <!-- Open the modal using ID.showModal() method -->
+            <!-- <button class="btn" onclick="show_details_modal.showModal()">open modal</button> -->
+            <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <div id="modal_container" class="space-y-1">
+
+                    </div>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn bg-red-400 text-gray-300">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+        </section>
+
+    </main>
+    <footer class="bg-base-200">
+        <div class=" py-5 md:py-10">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:space-x-56">
+                <aside class="text-center space-y-3 md:text-start items-center space-x-5">
+                    <h4 class="text-2xl text-red-900 font-bold md:pl-5">Get In Touch</h4>
+                    <p>Dit amet consectetur. <br>Condimentum adipiscing aliquam turpis placerat dolor. Purus <br> urna in
+                        sit nullam proin. </p>
+                    <div class="flex gap-2 justify-center items-center md:justify-start md:items-start">
+                        <i class="fa-regular fa-envelope"></i>
+                        <p>hockeys@support.com</p>
+                    </div>
+                    <div class="flex gap-2 justify-center items-center md:justify-start md:items-start">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <p>(+62) 123-321-543</p>
+                    </div>
+                </aside>
+                <div class=" flex gap-8 mx-auto lg:gap-x-40 my-10 md:my-0">
+                    <nav class="flex flex-col space-y-3 items-center">
+                        <h6 class="footer-title">Services</h6>
+                        <a class="link link-hover">About us</a>
+                        <a class="link link-hover">Contact</a>
+                        <a class="link link-hover">Jobs</a>
+                        <a class="link link-hover">Press kit</a>
+                    </nav>
+                    <nav class="flex flex-col space-y-3 items-center">
+                        <h6 class="footer-title">Company</h6>
+                        <a class="link link-hover">About us</a>
+                        <a class="link link-hover">Contact</a>
+                        <a class="link link-hover">Jobs</a>
+                        <a class="link link-hover">Press kit</a>
+                    </nav>
+                </div>
+                <nav class="flex flex-col space-y-3 items-center">
+                    <h6 class="footer-title">Legal</h6>
+                    <a class="link link-hover">About us</a>
+                    <a class="link link-hover">Contact</a>
+                    <a class="link link-hover">Jobs</a>
+                    <a class="link link-hover">Press kit</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
